@@ -2,6 +2,8 @@
 
 Telegram-бот для быстрого сохранения ссылок и заметок (MVP по спецификации в репозитории проекта).
 
+**Репозиторий:** [github.com/kurnosovmak/tg-bot](https://github.com/kurnosovmak/tg-bot)
+
 ## Стек
 
 - **Runtime:** Node.js 20+ (ESM)
