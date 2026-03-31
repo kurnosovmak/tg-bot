@@ -1,0 +1,32 @@
+# QuickSave Bot — прод-запуск с перезапуском и томом для SQLite
+# Скопируйте .env.example → .env и задайте TELEGRAM_BOT_TOKEN перед `docker compose up`.
+services:
+  quicksave-bot:
+    build: .
+    image: quicksave-bot:local
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      # Внутри контейнера фиксировано 8080; хостский порт меняйте в override при необходимости
+      HEALTH_PORT: "8080"
+      DATABASE_PATH: /app/data/quicksave.db
+    ports:
+      - "8080:8080"
+    volumes:
+      - quicksave-data:/app/data
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:8080/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 45s
+
+volumes:
+  quicksave-data:

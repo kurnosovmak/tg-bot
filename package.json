@@ -1,0 +1,27 @@
+{
+  "name": "quicksave-bot",
+  "version": "0.1.0",
+  "private": true,
+  "description": "QuickSave Telegram bot — MVP",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "node --watch src/index.js",
+    "lint": "eslint \"src/**/*.js\" \"test/**/*.js\" \"eslint.config.js\"",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "pino": "^9.6.0",
+    "sql.js": "^1.14.1",
+    "telegraf": "^4.16.3"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.21.0",
+    "eslint": "^9.21.0",
+    "globals": "^15.15.0"
+  }
+}
